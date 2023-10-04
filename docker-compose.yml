@@ -1,0 +1,8 @@
+version: '3'
+services:  
+  change_domains_ip:
+    container_name: change_domains_ip
+    build: 
+      dockerfile: Dockerfile
+    env_file:
+        - .env
