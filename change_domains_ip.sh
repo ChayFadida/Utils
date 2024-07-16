@@ -47,7 +47,7 @@ fi
 
 # Use regex to check for proper IPv4 format.
 if [[ ! $ip =~ ^$ipv4_regex$ ]]; then
-    logger -s "DDNS Updater: Failed to find a valid IP."
+    echo "DDNS Updater: Failed to find a valid IP."
     exit 2
 fi
 
@@ -112,7 +112,7 @@ for record_name in "${domain_array[@]}"; do
     ###########################################
     case "$update" in
     *"\"success\":false"*)
-        echo -e "DDNS Updater: $ip $record_name DDNS failed for $record_identifier. DUMPING RESULTS:\n$update" | logger -s
+        echo -e "DDNS Updater: $ip $record_name DDNS failed for $record_identifier. DUMPING RESULTS:\n$update"
         if [[ $slackuri != "" ]]; then
             curl -L -X POST $slackuri \
                 --data-raw '{
